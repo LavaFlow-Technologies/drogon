@@ -1,5 +1,6 @@
 #pragma once
 
+#ifdef DROGON_DLL
 #if defined(_WIN32) || defined(__CYGWIN__)
   #ifdef DROGON_EXPORTS
     // Building Drogon as a DLL
@@ -8,7 +9,7 @@
     #else
       #define DROGON_EXPORT __declspec(dllexport)
     #endif
-  #else
+  #elif
     // Using Drogon as a DLL
     #ifdef __GNUC__
       #define DROGON_EXPORT __attribute__((dllimport))
@@ -27,3 +28,7 @@
     #define DROGON_LOCAL
   #endif
 #endif
+#else
+  #define DROGON_EXPORT
+  #define DROGON_LOCAL
+#endif // DROGON_DLL
