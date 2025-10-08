@@ -1,5 +1,6 @@
 #pragma once
 
+#ifdef TRANTOR_DLL
 #if defined(_WIN32) || defined(__CYGWIN__)
   #ifdef TRANTOR_EXPORTS
     // Building TRANTOR as a DLL
@@ -27,3 +28,7 @@
     #define TRANTOR_LOCAL
   #endif
 #endif
+#else
+  #define TRANTOR_EXPORT
+  #define TRANTOR_LOCAL
+#endif // TRANTOR_DLL
